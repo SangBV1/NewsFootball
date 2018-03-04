@@ -95,21 +95,21 @@ namespace Model.Dao
 
         }
 
-        public advertisement Get_By_Id(int id)
+        public advertisement GetById(int id)
         {
             return db.advertisements.Find(id);
         }
 
-        public IEnumerable<advertisement> ListAllPaging(int page, int page_size)
+        public IEnumerable<advertisement> ListAllPaging(int page, int pageSize)
         {
             var model = from a in db.advertisements
                          select a;
-            return model.OrderByDescending(x => x.advertisement_position_id).ToPagedList(page, page_size);
+            return model.OrderByDescending(x => x.advertisement_position_id).ToPagedList(page, pageSize);
         }
 
 
         //system processing
-        public List<advertisement> ListAd_ClickCount_Des(int record = 0)
+        public List<advertisement> ListAdClickCountDes(int record = 0)
         {
             var model = from a in db.advertisements
                         select a;
@@ -128,15 +128,15 @@ namespace Model.Dao
         /// </summary>
         /// <param name="position_id"></param>
         /// <returns></returns>
-        public advertisement Get_By_Postion(string position_id, int number_ad = 0)
+        public advertisement GetByPostion(string positionId, int numberAd = 0)
         {
-            var model = db.advertisements.Where(x => x.advertisement_position_id == position_id && x.is_active == true);
+            var model = db.advertisements.Where(x => x.advertisement_position_id == positionId && x.is_active == true);
             Random rand = new Random();
             int toSkip = rand.Next(0, model.Count());
             return model.OrderBy(x => x.created_at).Skip(toSkip).Take(1).First();
         }
 
-        public int Check_TotalClickAd()
+        public int CheckTotalClickAd()
         {
             if (db.advertisements.Count() > 0)
             {
@@ -149,7 +149,7 @@ namespace Model.Dao
             }
         }
 
-        public advertisement GetAdvertisement_By_Type(string type)
+        public advertisement GetAdvertisementByType(string type)
         {
             if(db.advertisement_position.Count(x=>x.id == type) > 0 == false)
             {
@@ -168,9 +168,9 @@ namespace Model.Dao
         /// Lấy tất quảng cáo active theo loại 
         /// </summary>
         /// <returns></returns>
-        public List<advertisement> ListAd_ByPostion(string position_id)
+        public List<advertisement> ListAdByPostion(string positionId)
         {
-            return db.advertisements.Where(x => x.advertisement_position_id == position_id && x.is_active == true).OrderBy(x => x.display_order).ToList();
+            return db.advertisements.Where(x => x.advertisement_position_id == positionId && x.is_active == true).OrderBy(x => x.display_order).ToList();
         }
     }
 }

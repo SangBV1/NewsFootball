@@ -46,8 +46,8 @@ namespace asp_prj_news_sport.Controllers
 
             //advertisement
             var ad_dao = new ads_dao();
-            ViewBag.Advertisement_300x250 = ad_dao.GetAdvertisement_By_Type("300x250");
-            ViewBag.Advertisement_300x600 = ad_dao.GetAdvertisement_By_Type("300x600");
+            ViewBag.Advertisement_300x250 = ad_dao.GetAdvertisementByType("300x250");
+            ViewBag.Advertisement_300x600 = ad_dao.GetAdvertisementByType("300x600");
 
             return View(model);
         }

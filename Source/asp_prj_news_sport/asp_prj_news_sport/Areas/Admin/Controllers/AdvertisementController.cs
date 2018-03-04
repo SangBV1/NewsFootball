@@ -31,7 +31,7 @@ namespace asp_prj_news_sport.Areas.Admin.Controllers
         [HasCredential(RoleID = CommonPublic.CommonConstants.EDIT_AD)]
         public ActionResult Edit(int id)
         {
-            var model = new ads_dao().Get_By_Id(id);
+            var model = new ads_dao().GetById(id);
             SetListPosition(model.advertisement_position_id);
             return View(model);
         }

@@ -19,10 +19,10 @@ namespace asp_prj_news_sport.Areas.Admin.Controllers
             ViewBag.ListContentTag = new content_tag_dao().ListTag_NumberContent_Des(10);
             ViewBag.ListContentView = content_dao.ListContent_ViewCount_Des(7);
 
-            ViewBag.ListAdClick = ads_dao.ListAd_ClickCount_Des(10);
+            ViewBag.ListAdClick = ads_dao.ListAdClickCountDes(10);
 
             //ViewBag - return 1 value not List<>
-            ViewBag.TotalClickAd = ads_dao.Check_TotalClickAd();
+            ViewBag.TotalClickAd = ads_dao.CheckTotalClickAd();
 
             ViewBag.TotalShareContent = content_dao.Check_TotalShareContent();
             ViewBag.TotalViewContent = content_dao.Check_TotalViewContent();

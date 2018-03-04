@@ -15,7 +15,7 @@ namespace asp_prj_news_sport.Controllers
             var ad_dao = new ads_dao();
 
             var model = content_dao.ListTopNewContent_By_Category(0, 6);
-            ViewBag.ListBanner = ad_dao.ListAd_ByPostion("1280x500");
+            ViewBag.ListBanner = ad_dao.ListAdByPostion("1280x500");
             return View(model);
         }
 
